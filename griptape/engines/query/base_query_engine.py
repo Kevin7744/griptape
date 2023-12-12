@@ -3,13 +3,18 @@ from typing import Optional
 from attr import define
 from griptape.artifacts import TextArtifact, ListArtifact
 from griptape.rules import Ruleset
+from griptape.utils import PromptStack
 
 
 @define
 class BaseQueryEngine(ABC):
     @abstractmethod
     def query(
-        self, query: str, namespace: Optional[str] = None, rulesets: Optional[list[Ruleset]] = None, **kwargs
+        self,
+        query: str,
+        namespace: Optional[str] = None,
+        rulesets: Optional[list[Ruleset]] = None,
+        prompt_stack: Optional[PromptStack] = None,
     ) -> TextArtifact:
         ...
 
